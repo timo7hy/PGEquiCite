@@ -62,7 +62,7 @@ def load_csv(path: Path) -> dict[str, dict]:
     """
     items: dict[str, dict] = {}
 
-    with open(path, newline="", encoding="utf-8") as f:
+    with open(path, newline="", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
 
         # Normalise header names (strip whitespace, lowercase for lookup)
