@@ -51,12 +51,11 @@ The dataset is provided as `dataset/PGEquiCite_Dataset.csv`. Each row represents
 | `year` | Publication year |
 | `journal` | Journal name |
 | `abstract_text` | Full abstract text verbatim from PubMed |
-| `population_label` | Study population ancestry: `European` \| `Non-European` \| `Mixed` \| `Not Reported` |
-| `affiliation_label` | Author institution geography: `US-EU` \| `Global-South` \| `HBCU` \| `Indeterminate` |
+| `population_label` | Study population ancestry: `African` \| `Asian` \|`European` \| `Latin American` \| `Mixed` \| `Not Reported` |
+| `affiliation_label` | Author institution geography:  `Africa` \|`Asia` \|`Latin America` \|`US-EU` \| `Indeterminate` |
 | `query` | Natural language question given to the model |
 | `equity_gap_severity` | How stark the population evidence gap is: `Stark` \| `High` \| `Moderate` |
 | `reference_answer` | Description of what a complete equitable model response must contain |
-| `must_cite_abstracts` | Comma-separated abstract IDs that must be cited for a complete response |
 
 ---
 
@@ -149,7 +148,21 @@ pgequicite/
     ├── rubric.md
     └── schema.md
 ```
+## Evaluation Code
 
+### Manual Evaluation (Current Method)
+
+All benchmark results in this release were produced using manual evaluation. Prompts were generated using `prompt_gen/main.py`, run through GPT-4o, Claude, and Gemini via their respective web interfaces in fresh conversations, and scored against the rubric by human reviewers.
+
+```bash
+python eval/prompt_gen/main.py --dataset dataset/PGEquiCite_Dataset.csv
+```
+
+This generates `prompts_for_review.txt` with all prompts formatted for copy-paste. See the [How to Evaluate a Model](#how-to-evaluate-a-model) section for the full workflow.
+
+### Automated Evaluation (Experimental, Not Validated)
+
+The `dev/` folder contains an API-based evaluation package that programmatically queries Anthropic, OpenAI, and Google APIs and auto-scores coverage using author last name + year citation pattern matching. This code has not been validated against human scores and is provided as a starting point for future automated evaluation work. It should not be used to produce benchmark scores without human review and validation of the auto-scoring logic against a calibration set.
 ---
 
 ## Limitations
