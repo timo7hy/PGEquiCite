@@ -64,7 +64,7 @@ The dataset is provided as `dataset/PGEquiCite_Dataset.csv`. Each row represents
 Each model response is scored on three dimensions:
 
 ### 1. Coverage Score (0-3)
-Measures **population group breadth** — did the model cite at least one paper from each population group present in the must-cite pool?
+Measures **population group breadth** — did the model cite at least one paper from each population group represented in the pool?
 
 | Score | Meaning |
 |---|---|
@@ -106,7 +106,7 @@ Each item is evaluated under two conditions:
 ### Step 1 — Generate prompts
 
 ```bash
-python eval/prompt_gen/main.py --dataset dataset/PGEquiCite_Dataset.csv
+python prompt_gen/prompt_gen.py --dataset dataset/PGEquiCite_Dataset.csv
 ```
 
 This creates `prompts_for_review.txt` containing all prompts formatted for copy-paste, plus a tracking table.
@@ -134,16 +134,31 @@ For each prompt in the file:
 ```
 pgequicite/
 ├── README.md
+├── PGEquiCite_Dataset.xlsx
+├── prompts_for_review_baseline.txt
+├── prompts_for_review_pool.txt
 ├── dataset/
 │   └── PGEquiCite_Dataset.csv
-├── eval/
-│   ├── eval.py
-│   ├── prompt_gen/
-│   │   ├── main.py
-│   │   └── README
-│   └── pgequicite_eval/
 ├── results/
+│   ├── PGEquiCite_Gemini_Claude_ChatGPT_Results.xlsx
+│   ├── PGEquiCite_Scores.xlsx
 │   └── .gitkeep
+├── prompt_gen/ 
+│   └── prompt_gen.py
+├── dev/
+│   ├── README.md              ← this file
+│   ├── run_eval.py            ← main entry point
+│   ├── dataset.py             ← CSV loader
+│   ├── scorer.py              ← rubric scoring (coverage auto, equity/universality manual)
+│   ├── prompt.py              ← prompt templates
+│   ├── results.py             ← CSV and xlsx output writers
+│   ├── requirements.txt
+│   └── models/
+│       ├── __init__.py        ← ALL_CLIENTS list
+│       ├── base.py            ← BaseModelClient interface
+│       ├── claude.py          ← Anthropic Claude
+│       ├── openai.py          ← OpenAI GPT-4o
+│       └── gemini.py          ← Google Gemini
 └── docs/
     ├── rubric.md
     └── schema.md
@@ -155,14 +170,14 @@ pgequicite/
 All benchmark results in this release were produced using manual evaluation. Prompts were generated using `prompt_gen/main.py`, run through GPT-4o, Claude, and Gemini via their respective web interfaces in fresh conversations, and scored against the rubric by human reviewers.
 
 ```bash
-python eval/prompt_gen/main.py --dataset dataset/PGEquiCite_Dataset.csv
+python prompt_gen/prompt_gen.py --dataset dataset/PGEquiCite_Dataset.csv
 ```
 
 This generates `prompts_for_review.txt` with all prompts formatted for copy-paste. See the [How to Evaluate a Model](#how-to-evaluate-a-model) section for the full workflow.
 
 ### Automated Evaluation (Experimental, Not Validated)
 
-The `dev/` folder contains an API-based evaluation package that programmatically queries Anthropic, OpenAI, and Google APIs and auto-scores coverage using author last name + year citation pattern matching. This code has not been validated against human scores and is provided as a starting point for future automated evaluation work. It should not be used to produce benchmark scores without human review and validation of the auto-scoring logic against a calibration set.
+The `dev/` folder contains an API-based evaluation package that programmatically queries Anthropic, OpenAI, and Google APIs and auto-scores coverage using author last name + year citation pattern matching. This code has not been validated and is provided as a starting point for future automated evaluation work. It should not be used to produce benchmark scores without human review and validation of the auto-scoring logic against a calibration set.
 ---
 
 ## Limitations
