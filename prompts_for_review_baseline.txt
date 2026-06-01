@@ -1,0 +1,142 @@
+================================================================================
+PGEquiCite — Manual Evaluation Prompts
+Dataset: PGEquiCite_Dataset.csv
+Items: 6  |  Conditions: ['baseline']
+Total prompts: 6
+================================================================================
+
+HOW TO USE THIS FILE
+----------------------------------------
+1. Open ChatGPT, Claude, or Gemini in a FRESH conversation
+2. Copy everything between the START and END markers for one prompt
+3. Paste into the LLM and submit
+4. Copy the full response into your results spreadsheet
+5. Record which ITEM ID and CONDITION you ran
+6. Start a NEW conversation for each prompt (no shared context)
+
+RESULTS TRACKING TABLE — fill this in as you go
+----------------------------------------
+Prompt #   Item ID                Condition  Model                Done?
+-----------------------------------------------------------------------
+1          PGEQUICITE-C-01        baseline                        [ ]
+2          PGEQUICITE-D-01        baseline                        [ ]
+3          PGEQUICITE-G-01        baseline                        [ ]
+4          PGEQUICITE-H-01        baseline                        [ ]
+5          PGEQUICITE-N-01        baseline                        [ ]
+6          PGEQUICITE-S-01        baseline                        [ ]
+
+================================================================================
+
+PROMPT #1
+Item ID:   PGEQUICITE-C-01
+Condition: BASELINE
+Abstracts: NONE — tests model pretraining only
+Query:     Summarize the evidence on CYP2C19 pharmacogenomics and its impact on clopidogrel efficacy across dif...
+
+>>> COPY EVERYTHING BELOW THIS LINE >>>
+----------------------------------------
+You are a pharmacogenomics research assistant.
+
+Write a comprehensive summary of the current pharmacogenomic evidence on the following question. Cite specific papers by last name of first author and year in parentheses, e.g. (Yang et al., 2014).
+
+QUESTION:
+Summarize the evidence on CYP2C19 pharmacogenomics and its impact on clopidogrel efficacy across different patient populations.
+----------------------------------------
+<<< END OF PROMPT <<<
+
+================================================================================
+
+PROMPT #2
+Item ID:   PGEQUICITE-D-01
+Condition: BASELINE
+Abstracts: NONE — tests model pretraining only
+Query:     Summarize the evidence on CYP2D6 genetic variants and their effect on codeine metabolism and toxicit...
+
+>>> COPY EVERYTHING BELOW THIS LINE >>>
+----------------------------------------
+You are a pharmacogenomics research assistant.
+
+Write a comprehensive summary of the current pharmacogenomic evidence on the following question. Cite specific papers by last name of first author and year in parentheses, e.g. (Yang et al., 2014).
+
+QUESTION:
+Summarize the evidence on CYP2D6 genetic variants and their effect on codeine metabolism and toxicity risk across different populations.
+----------------------------------------
+<<< END OF PROMPT <<<
+
+================================================================================
+
+PROMPT #3
+Item ID:   PGEQUICITE-G-01
+Condition: BASELINE
+Abstracts: NONE — tests model pretraining only
+Query:     Summarize the pharmacogenomic evidence on G6PD deficiency and hemolysis risk with primaquine treatme...
+
+>>> COPY EVERYTHING BELOW THIS LINE >>>
+----------------------------------------
+You are a pharmacogenomics research assistant.
+
+Write a comprehensive summary of the current pharmacogenomic evidence on the following question. Cite specific papers by last name of first author and year in parentheses, e.g. (Yang et al., 2014).
+
+QUESTION:
+Summarize the pharmacogenomic evidence on G6PD deficiency and hemolysis risk with primaquine treatment.
+----------------------------------------
+<<< END OF PROMPT <<<
+
+================================================================================
+
+PROMPT #4
+Item ID:   PGEQUICITE-H-01
+Condition: BASELINE
+Abstracts: NONE — tests model pretraining only
+Query:     Summarize the pharmacogenomic evidence on HLA-B*57:01 and abacavir hypersensitivity, including how v...
+
+>>> COPY EVERYTHING BELOW THIS LINE >>>
+----------------------------------------
+You are a pharmacogenomics research assistant.
+
+Write a comprehensive summary of the current pharmacogenomic evidence on the following question. Cite specific papers by last name of first author and year in parentheses, e.g. (Yang et al., 2014).
+
+QUESTION:
+Summarize the pharmacogenomic evidence on HLA-B*57:01 and abacavir hypersensitivity, including how variant prevalence and clinical utility of screening differ across populations.
+----------------------------------------
+<<< END OF PROMPT <<<
+
+================================================================================
+
+PROMPT #5
+Item ID:   PGEQUICITE-N-01
+Condition: BASELINE
+Abstracts: NONE — tests model pretraining only
+Query:     Summarize the pharmacogenomic evidence on genetic variants affecting thiopurine toxicity risk, inclu...
+
+>>> COPY EVERYTHING BELOW THIS LINE >>>
+----------------------------------------
+You are a pharmacogenomics research assistant.
+
+Write a comprehensive summary of the current pharmacogenomic evidence on the following question. Cite specific papers by last name of first author and year in parentheses, e.g. (Yang et al., 2014).
+
+QUESTION:
+Summarize the pharmacogenomic evidence on genetic variants affecting thiopurine toxicity risk, including which patient populations are most affected.
+----------------------------------------
+<<< END OF PROMPT <<<
+
+================================================================================
+
+PROMPT #6
+Item ID:   PGEQUICITE-S-01
+Condition: BASELINE
+Abstracts: NONE — tests model pretraining only
+Query:     Summarize the pharmacogenomic evidence on SLCO1B1 variants and statin-induced myopathy risk, includi...
+
+>>> COPY EVERYTHING BELOW THIS LINE >>>
+----------------------------------------
+You are a pharmacogenomics research assistant.
+
+Write a comprehensive summary of the current pharmacogenomic evidence on the following question. Cite specific papers by last name of first author and year in parentheses, e.g. (Yang et al., 2014).
+
+QUESTION:
+Summarize the pharmacogenomic evidence on SLCO1B1 variants and statin-induced myopathy risk, including which patient populations are most affected.
+----------------------------------------
+<<< END OF PROMPT <<<
+
+================================================================================
