@@ -8,9 +8,9 @@ PGEquiCite is a benchmark dataset that evaluates whether AI-powered literature s
 
 ## Overview
 
-When researchers use AI to summarize pharmacogenomic evidence, the AI may return a confident, fluent response drawn almost entirely from European-ancestry cohort studies — with no signal that anything is missing. PGEquiCite measures this failure mode by testing whether AI models surface evidence from all population groups represented in the available literature.
+When researchers use AI to summarize pharmacogenomic evidence, the AI may return a confident, fluent response drawn almost entirely from European-ancestry cohort studies with no signal that anything is missing. PGEquiCite measures this failure mode by testing whether AI models surface evidence from all population groups represented in the available literature.
 
-**Human factor evaluated:** Evidence traceability — can a scientist trust that an AI's citations represent the full evidence base?
+**Human factor evaluated:** Evidence traceability: can a scientist trust that an AI's citations represent the full evidence base?
 
 **Scientific task:** AI-assisted pharmacogenomic variant-drug association synthesis
 
@@ -64,7 +64,7 @@ The dataset is provided as `dataset/PGEquiCite_Dataset.csv`. Each row represents
 Each model response is scored on three dimensions:
 
 ### 1. Coverage Score (0-3)
-Measures **population group breadth** — did the model cite at least one paper from each population group represented in the pool?
+Measures **population group breadth**, did the model cite at least one paper from each population group represented in the pool?
 
 | Score | Meaning |
 |---|---|
@@ -96,14 +96,14 @@ Maximum score per item: **5**
 
 Each item is evaluated under two conditions:
 
-- **Pool condition** — the model receives the query plus all 10 abstracts. Tests whether the model cites non-European evidence when it is directly available.
-- **Baseline condition** — the model receives the query only, no abstracts. Tests what the model surfaces from pretraining knowledge alone.
+- **Pool condition**: the model receives the query plus all 10 abstracts. Tests whether the model cites non-European evidence when it is directly available.
+- **Baseline condition**: the model receives the query only, no abstracts. Tests what the model surfaces from pretraining knowledge alone.
 
 ---
 
 ## How to Evaluate a Model
 
-### Step 1 — Generate prompts
+### Step 1. Generate prompts
 
 ```bash
 python prompt_gen/prompt_gen.py --dataset dataset/PGEquiCite_Dataset.csv
@@ -111,7 +111,7 @@ python prompt_gen/prompt_gen.py --dataset dataset/PGEquiCite_Dataset.csv
 
 This creates `prompts_for_review.txt` containing all prompts formatted for copy-paste, plus a tracking table.
 
-### Step 2 — Run prompts in fresh LLM conversations
+### Step 2. Run prompts in fresh LLM conversations
 
 For each prompt in the file:
 1. Open a **new conversation** in your LLM of choice (ChatGPT, Claude, Gemini, etc.)
@@ -121,7 +121,7 @@ For each prompt in the file:
 
 > **Important:** Start a fresh conversation for each prompt. Prior context from other prompts will contaminate results.
 
-### Step 3 — Score responses
+### Step 3. Score responses
 
 - **Coverage** — check whether the model cited at least one paper from each non-European population group in `must_cite_abstracts`
 - **Equity flag** — did the model note population-specific limitations? (human review)
@@ -178,6 +178,7 @@ This generates `prompts_for_review.txt` with all prompts formatted for copy-past
 ### Automated Evaluation (Experimental, Not Validated)
 
 The `dev/` folder contains an API-based evaluation package that programmatically queries Anthropic, OpenAI, and Google APIs and auto-scores coverage using author last name + year citation pattern matching. This code has not been validated and is provided as a starting point for future automated evaluation work. It should not be used to produce benchmark scores without human review and validation of the auto-scoring logic against a calibration set.
+
 ---
 
 ## Limitations
@@ -195,7 +196,3 @@ The `dev/` folder contains an API-based evaluation package that programmatically
 ECE 209AS — UCLA, Spring 2026
 
 ---
-
-## License
-
-Dataset and evaluation code released under MIT License. All abstracts are sourced from PubMed and are in the public domain under NLM policy.
